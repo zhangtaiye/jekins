@@ -1,3 +1,3 @@
 # springboot_practise
-个人根据程序员DD的博客练习springboot
+个人根据张志坚的博客练习springboot
 jenkins+docker自动持续构建
