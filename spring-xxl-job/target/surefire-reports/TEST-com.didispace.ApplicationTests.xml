@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.didispace.ApplicationTests" time="0.192" tests="1" errors="0" skipped="0" failures="1">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="D:\jdk1.8.0_31\jre\bin"/>
+    <property name="java.vm.version" value="25.31-b07"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="D:\下载\SpringBoot-Learning\Chapter3-1-2"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\下载\SpringBoot-Learning\Chapter3-1-2"/>
+    <property name="java.runtime.version" value="1.8.0_31-b13"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="D:\jdk1.8.0_31\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\ASUS\AppData\Local\Temp\"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="classworlds.conf" value="D:\workspace-test\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf4510688105057433111.tmp"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="D:\jdk1.8.0_31\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:/jdk1.8.0_31/bin/../jre/bin/server;D:/jdk1.8.0_31/bin/../jre/bin;D:/jdk1.8.0_31/bin/../jre/lib/amd64;D:\jdk1.8.0_31\bin;D:\jdk1.8.0_31\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\TortoiseSVN\bin;D:\apache-maven-3.3.9\bin;C:\Program Files (x86)\MySQL\MySQL Fabric 1.5 &amp; MySQL Utilities 1.5\;C:\Program Files (x86)\MySQL\MySQL Fabric 1.5 &amp; MySQL Utilities 1.5\Doctrine extensions for PHP\;D:\Git\cmd;D:\TortoiseGit\bin;D:\eclipse;;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="C:\Users\ASUS"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="GBK"/>
+    <property name="user.name" value="ASUS"/>
+    <property name="java.class.path" value="D:\apache-maven-3.3.9\boot\plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="D:\jdk1.8.0_31\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B -gs D:\apache-maven-3.3.9\conf\settings.xml -s D:\apache-maven-3.3.9\conf\settings.xml install"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="zh"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_31"/>
+    <property name="java.ext.dirs" value="D:\jdk1.8.0_31\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="D:\jdk1.8.0_31\jre\lib\resources.jar;D:\jdk1.8.0_31\jre\lib\rt.jar;D:\jdk1.8.0_31\jre\lib\sunrsasign.jar;D:\jdk1.8.0_31\jre\lib\jsse.jar;D:\jdk1.8.0_31\jre\lib\jce.jar;D:\jdk1.8.0_31\jre\lib\charsets.jar;D:\jdk1.8.0_31\jre\lib\jfr.jar;D:\jdk1.8.0_31\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="D:\apache-maven-3.3.9"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase name="getHello" classname="com.didispace.ApplicationTests" time="0.192">
+    <failure message="Status expected:&lt;200&gt; but was:&lt;404&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status expected:<200> but was:<404>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:60)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:89)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers$10.match(StatusResultMatchers.java:655)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:171)
+	at com.didispace.ApplicationTests.getHello(ApplicationTests.java:45)
+]]></failure>
+    <system-out><![CDATA[10:25:47.204 [main] DEBUG o.s.t.c.j.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.didispace.ApplicationTests]
+10:25:47.210 [main] DEBUG o.s.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+10:25:47.216 [main] DEBUG o.s.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+10:25:47.227 [main] DEBUG o.s.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.didispace.ApplicationTests] from class [org.springframework.test.context.web.WebTestContextBootstrapper]
+10:25:47.255 [main] DEBUG o.s.t.c.w.WebTestContextBootstrapper - Found explicit ContextLoader class [org.springframework.boot.test.SpringApplicationContextLoader] for context configuration attributes [ContextConfigurationAttributes@57536d79 declaringClass = 'com.didispace.ApplicationTests', classes = '{class org.springframework.mock.web.MockServletContext}', locations = '{}', inheritLocations = true, initializers = '{}', inheritInitializers = true, name = [null], contextLoaderClass = 'org.springframework.boot.test.SpringApplicationContextLoader']
+10:25:47.260 [main] DEBUG o.s.t.c.s.AbstractContextLoader - Did not detect default resource location for test class [com.didispace.ApplicationTests]: class path resource [com/didispace/ApplicationTests-context.xml] does not exist
+10:25:47.260 [main] DEBUG o.s.t.c.s.AbstractContextLoader - Did not detect default resource location for test class [com.didispace.ApplicationTests]: class path resource [com/didispace/ApplicationTestsContext.groovy] does not exist
+10:25:47.260 [main] INFO  o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.didispace.ApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+10:25:47.262 [main] DEBUG o.s.t.c.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.didispace.ApplicationTests]
+10:25:47.264 [main] DEBUG o.s.t.c.w.WebTestContextBootstrapper - @TestExecutionListeners is not present for class [com.didispace.ApplicationTests]: using defaults.
+10:25:47.270 [main] INFO  o.s.t.c.w.WebTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+10:25:47.283 [main] INFO  o.s.t.c.w.WebTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@36b4cef0, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@fad74ee, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@1a1d6a08, org.springframework.test.context.support.DirtiesContextTestExecutionListener@37d31475, org.springframework.test.context.transaction.TransactionalTestExecutionListener@27808f31, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@436e852b]
+10:25:47.285 [main] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.didispace.ApplicationTests]
+10:25:47.285 [main] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.didispace.ApplicationTests]
+10:25:47.287 [main] DEBUG o.s.t.c.j.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.didispace.ApplicationTests]
+10:25:47.287 [main] DEBUG o.s.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+10:25:47.288 [main] DEBUG o.s.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+10:25:47.288 [main] DEBUG o.s.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.didispace.ApplicationTests] from class [org.springframework.test.context.web.WebTestContextBootstrapper]
+10:25:47.289 [main] DEBUG o.s.t.c.w.WebTestContextBootstrapper - Found explicit ContextLoader class [org.springframework.boot.test.SpringApplicationContextLoader] for context configuration attributes [ContextConfigurationAttributes@60285225 declaringClass = 'com.didispace.ApplicationTests', classes = '{class org.springframework.mock.web.MockServletContext}', locations = '{}', inheritLocations = true, initializers = '{}', inheritInitializers = true, name = [null], contextLoaderClass = 'org.springframework.boot.test.SpringApplicationContextLoader']
+10:25:47.289 [main] DEBUG o.s.t.c.s.AbstractContextLoader - Did not detect default resource location for test class [com.didispace.ApplicationTests]: class path resource [com/didispace/ApplicationTests-context.xml] does not exist
+10:25:47.290 [main] DEBUG o.s.t.c.s.AbstractContextLoader - Did not detect default resource location for test class [com.didispace.ApplicationTests]: class path resource [com/didispace/ApplicationTestsContext.groovy] does not exist
+10:25:47.290 [main] INFO  o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.didispace.ApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+10:25:47.290 [main] DEBUG o.s.t.c.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.didispace.ApplicationTests]
+10:25:47.290 [main] DEBUG o.s.t.c.w.WebTestContextBootstrapper - @TestExecutionListeners is not present for class [com.didispace.ApplicationTests]: using defaults.
+10:25:47.292 [main] INFO  o.s.t.c.w.WebTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+10:25:47.293 [main] INFO  o.s.t.c.w.WebTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7b69c6ba, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@46daef40, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@12f41634, org.springframework.test.context.support.DirtiesContextTestExecutionListener@13c27452, org.springframework.test.context.transaction.TransactionalTestExecutionListener@262b2c86, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@371a67ec]
+10:25:47.293 [main] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.didispace.ApplicationTests]
+10:25:47.294 [main] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.didispace.ApplicationTests]
+10:25:47.294 [main] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.didispace.ApplicationTests]
+10:25:47.294 [main] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.didispace.ApplicationTests]
+10:25:47.295 [main] DEBUG o.s.t.c.s.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@63440df3 testClass = ApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@3aeaafa6 testClass = ApplicationTests, locations = '{}', classes = '{class org.springframework.mock.web.MockServletContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.SpringApplicationContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
+10:25:47.296 [main] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.didispace.ApplicationTests]
+10:25:47.296 [main] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.didispace.ApplicationTests]
+10:25:47.355 [main] DEBUG o.s.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+10:25:47.357 [main] DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+10:25:47.357 [main] DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+10:25:47.359 [main] DEBUG o.s.core.env.StandardEnvironment - Adding [integrationTest] PropertySource with search precedence immediately lower than [systemEnvironment]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.3.2.RELEASE)
+
+2019-05-13 10:25:47.581  INFO 8108 --- [           main] com.didispace.ApplicationTests           : Starting ApplicationTests on ASUS-PC0i with PID 8108 (started by ASUS in D:\涓嬭浇\SpringBoot-Learning\Chapter3-1-2)
+2019-05-13 10:25:47.581  INFO 8108 --- [           main] com.didispace.ApplicationTests           : No active profile set, falling back to default profiles: default
+2019-05-13 10:25:47.821  INFO 8108 --- [           main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@7f3b84b8: startup date [Mon May 13 10:25:47 CST 2019]; root of context hierarchy
+2019-05-13 10:25:47.875  INFO 8108 --- [           main] com.didispace.ApplicationTests           : Started ApplicationTests in 0.507 seconds (JVM running for 0.942)
+2019-05-13 10:25:48.004  INFO 8108 --- [           main] ilder$StaticRequestMappingHandlerMapping : Mapped "{[/bessky/]}" onto public java.lang.String com.zzj.web.HelloController.index(org.springframework.ui.ModelMap)
+2019-05-13 10:25:48.006  INFO 8108 --- [           main] ilder$StaticRequestMappingHandlerMapping : Mapped "{[/bessky/getName],methods=[GET]}" onto public java.lang.String com.zzj.web.HelloController.hello()
+2019-05-13 10:25:48.054  INFO 8108 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.test.web.servlet.setup.StubWebApplicationContext@19e7a160
+2019-05-13 10:25:48.088  INFO 8108 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring FrameworkServlet ''
+2019-05-13 10:25:48.089  INFO 8108 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2019-05-13 10:25:48.089  INFO 8108 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 0 ms
+2019-05-13 10:25:48.105  WARN 8108 --- [           main] o.s.web.servlet.PageNotFound             : No mapping found for HTTP request with URI [/hello] in DispatcherServlet with name ''
+]]></system-out>
+  </testcase>
+</testsuite>
