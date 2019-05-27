@@ -28,7 +28,12 @@ public class Demo
         // lists.add(new Person("张三7", null));
         // lists.add(new Person(null, 18));
         // lists.add(new Person(null, null));
-
+        /*lists.add(null);
+        lists.stream().forEach(p -> {
+            if(p !=null) {
+                System.out.println(p.getName());
+            }
+        });*/
         // list转成string 取出所有的姓名
         List<String> names = lists.stream().map(p -> p.getName()).collect(Collectors.toList());
         // names.stream().forEach(a -> System.out.print(a));
@@ -116,6 +121,7 @@ public class Demo
                 .map(Person::getName)
                 .collect(Collectors.toList());
         //studentList.stream().forEach(a -> System.out.print(a));
+        
     }
 
 }
