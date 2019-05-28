@@ -8,7 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import com.zzj.domain.Person;
 
@@ -122,6 +124,17 @@ public class Demo
                 .collect(Collectors.toList());
         //studentList.stream().forEach(a -> System.out.print(a));
         
+        //找出数据组的最大最小值
+        int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        int minx = IntStream.of(array).min().getAsInt();
+        System.out.println(minx);
+        
+        //找出集合中的最大最小值
+        List<Integer> asList4 = Arrays.asList(5, 2, 3);
+        Optional<Integer> min = asList4.stream().min(Comparator.comparing(Function.identity()));
+        Optional<Integer> max = asList4.stream().max((o1, o2) -> o1.compareTo(o2));
+        System.out.println("min:"+min.get());
+        System.out.println("max:"+max.get());
     }
 
 }
