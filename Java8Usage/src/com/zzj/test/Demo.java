@@ -1,9 +1,12 @@
 package com.zzj.test;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +14,8 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import org.apache.commons.lang3.StringUtils;
 
 import com.zzj.domain.Person;
 
@@ -135,6 +140,24 @@ public class Demo
         Optional<Integer> max = asList4.stream().max((o1, o2) -> o1.compareTo(o2));
         System.out.println("min:"+min.get());
         System.out.println("max:"+max.get());
+         
+        List<Person> pList=new ArrayList<Person>();
+        Person pp1=new Person("张三1", 1);
+        pp1.setTime(new Timestamp(System.currentTimeMillis()));
+        pList.add(pp1);
+        
+        Person pp2=new Person("张三1", 1);
+        pp2.setTime(new Timestamp(System.currentTimeMillis()));
+        pList.add(pp2);
+        List<Integer> collect = pList.stream().map(p -> p.getAge()).distinct().collect(Collectors.toList());
+        Collections.sort(collect);
+        String monthStr=StringUtils.join(collect,'月');
+        System.out.println(monthStr);
+        
+        System.out.println(Optional.ofNullable(null).orElse(0));
+        Map<String, Integer> appleMap = lists.stream().filter(p -> p.getName() != null).collect(Collectors.toMap(Person::getName, a -> 10,(k1,k2)-> k1 + k2));
+        System.out.println(appleMap);
+        
     }
 
 }
