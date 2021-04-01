@@ -1,22 +1,22 @@
 package com.zzj.test;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.IntSummaryStatistics;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import org.apache.commons.lang3.StringUtils;
-
+import com.zzj.domain.Order;
+import com.zzj.domain.OrderItem;
 import com.zzj.domain.Person;
 
 public class Demo
@@ -25,14 +25,14 @@ public class Demo
     public static void main(String[] args)
     {
         List<Person> lists = new ArrayList<Person>();
-        lists.add(new Person("ÕÅÈı1", 1));
-        lists.add(new Person("ÕÅÈı2", 4));
-        lists.add(new Person("ÕÅÈı3", 1));
-        lists.add(new Person("ÕÅÈı4", 3));
-        lists.add(new Person("ÕÅÈı5", 67));
-        lists.add(new Person("ÕÅÈı6", 8));
-        lists.add(new Person("ÕÅÈı6", 1));
-        // lists.add(new Person("ÕÅÈı7", null));
+        lists.add(new Person("å¼ ä¸‰1", 1));
+        lists.add(new Person("å¼ ä¸‰2", 4));
+        lists.add(new Person("å¼ ä¸‰3", 1));
+        lists.add(new Person("å¼ ä¸‰4", 3));
+        lists.add(new Person("å¼ ä¸‰5", 67));
+        lists.add(new Person("å¼ ä¸‰6", 8));
+        lists.add(new Person("å¼ ä¸‰6", 1));
+        // lists.add(new Person("å¼ ä¸‰7", null));
         // lists.add(new Person(null, 18));
         // lists.add(new Person(null, null));
         /*lists.add(null);
@@ -41,27 +41,40 @@ public class Demo
                 System.out.println(p.getName());
             }
         });*/
-        // list×ª³Éstring È¡³öËùÓĞµÄĞÕÃû
+        // listè½¬æˆstring å–å‡ºæ‰€æœ‰çš„å§“å
         List<String> names = lists.stream().map(p -> p.getName()).collect(Collectors.toList());
         // names.stream().forEach(a -> System.out.print(a));
+        
+        // join
+        String names23 = lists.stream().map(p -> p.getName()).collect(Collectors.joining(","));
 
-        // È¡³öËùÓĞÄêÁä´óÓÚ13µÄ
-        List<String> names2 = lists.stream().filter(f -> (f.getAge() != null && f.getAge() > 13)).map(p -> p.getName()).collect(Collectors.toList());
+        // å–å‡ºæ‰€æœ‰å¹´é¾„å¤§äº13çš„
+        List<String> names2 = lists.stream().filter(f -> (f.getAge() != null && f.getAge() > 13)).map(p -> p.getName())
+            .collect(Collectors.toList());
         // names2.stream().forEach(a -> System.out.print(a));
 
-        // list×ª³Éstring È¥µôÃû×ÖÏàÍ¬µÄ
+        // listè½¬æˆstring å»æ‰åå­—ç›¸åŒçš„
         List<String> names3 = lists.stream().map(p -> p.getName()).distinct().collect(Collectors.toList());
         // names3.stream().forEach(a -> System.out.print(a));
 
-        // ¸ù¾İÄêÁä½µĞò
-        lists.stream().filter(f -> f.getAge() != null).collect(Collectors.toList()).sort((Person p1, Person p2) -> p2.getAge().compareTo(p1.getAge()));
-        // lists.stream().forEach(a -> System.out.print(a.getAge()));
+        // æ ¹æ®å¹´é¾„å‡åº
+        // lists.sort(Comparator.comparing(Person::getAge));
+        // lists.stream().forEach(a -> System.out.println(a.getAge()));
 
-        // list×ª³Émap(ÕıÈ··½Ê½)
-        Map<String, Integer> streamMap = lists.stream().collect(HashMap::new, (m, v) -> m.put(v.getName(), v.getAge()), HashMap::putAll);
+        // æ ¹æ®å¹´é¾„é™åº
+        // lists.sort(Comparator.comparing(Person::getAge).reversed());
+        // lists.sort((Person p1, Person p2) -> p2.getAge().compareTo(p1.getAge()));
+        // lists.stream().forEach(a -> System.out.println(a.getAge()));
+
+        // listè½¬æˆmap(æ­£ç¡®æ–¹å¼)
+        Map<String, Integer> streamMap =
+            lists.stream().collect(LinkedHashMap::new, (m, v) -> m.put(v.getName(), v.getAge()), LinkedHashMap::putAll);
         // System.out.println(streamMap);
 
-        // ÖØ¸´Ê±½«ÖØ¸´keyµÄÊı¾İ×é³É¼¯ºÏ(¿ÕÖ¸Õë)
+        // Collectors.toMap æœ‰é‡å¤é£é™©
+        // Map<String,Person> p =lists.stream().collect(Collectors.toMap(Person::getName, a -> a));
+
+        // é‡å¤æ—¶å°†é‡å¤keyçš„æ•°æ®ç»„æˆé›†åˆ(ç©ºæŒ‡é’ˆ)
         Map<String, List<Integer>> keyMap = lists.stream().collect(Collectors.toMap(Person::getName, p -> {
             List<Integer> ageList = new ArrayList<Integer>();
             ageList.add(p.getAge());
@@ -71,93 +84,102 @@ public class Demo
             return value1;
         }));
         // System.out.println(keyMap);
+        // é‡å¤æ—¶å°†é‡å¤keyçš„æ•°æ®ç»„æˆé›†åˆ(ç©ºæŒ‡é’ˆ)
+        //Map<String, List<Integer>> keyMap = lists.stream().collect(Collectors.groupingBy(Person::getName, Collectors.mapping(Person::getAge, Collectors.toList())));
+        
 
         Person p1 = null;
         Person p2 = new Person(null, 23);
         String str1 = Optional.ofNullable(p2).map(a -> a.getName()).orElse("ffff");
         // System.out.println(str1);
 
-        // ·Ö×é(´æÔÚ key Îª¿ÕµÄ·çÏÕ)
+        // åˆ†ç»„(å­˜åœ¨ key ä¸ºç©ºçš„é£é™©)
         Map<String, List<Person>> groups = lists.stream().collect(Collectors.groupingBy(Person::getName));
         // System.out.println(groups);
 
-        // ÄêÁäÇóÆ½¾ùÖµ ´æÔÚ ¿ÕÖ¸Õë·çÏÕ
+        // å¹´é¾„æ±‚å¹³å‡å€¼ å­˜åœ¨ ç©ºæŒ‡é’ˆé£é™©
         // double avgAge = lists.stream().collect(Collectors.averagingInt(Person::getAge));
         // System.out.println(avgAge);
 
-        // ÔÊĞínull
+        // å…è®¸null
         String nameStr = lists.stream().map(Person::getName).collect(Collectors.joining(", "));
         // System.out.println(nameStr);
 
         List<Integer> asList = Arrays.asList(1, 2, 3);
-        // ±ØĞëÂú×ãÈÎºÎÒ»¸öÔªËØ ¶¼ Ğ¡ÓÚ5 ²Å·µ»Øtrue ÓĞÒ»¸öÔªËØ´óÓÚ5 ¶¼»á·µ»Øfalse
+        // å¿…é¡»æ»¡è¶³ä»»ä½•ä¸€ä¸ªå…ƒç´  éƒ½ å°äº5 æ‰è¿”å›true æœ‰ä¸€ä¸ªå…ƒç´ å¤§äº5 éƒ½ä¼šè¿”å›false
         boolean allMatch = asList.stream().allMatch(i -> i < 5);
-        //System.out.println(allMatch);
-        
+        // System.out.println(allMatch);
+
         List<Integer> asList1 = Arrays.asList(8, 9, 10);
-        // ±ØĞëÂú×ãÈÎºÎÒ»¸öÔªËØ ¶¼²»ÄÜ Ğ¡ÓÚ5 ²Å·µ»Øtrue ÓĞÒ»¸öÔªËØĞ¡ÓÚ5 ¶¼»á·µ»Øfalse
+        // å¿…é¡»æ»¡è¶³ä»»ä½•ä¸€ä¸ªå…ƒç´  éƒ½ä¸èƒ½ å°äº5 æ‰è¿”å›true æœ‰ä¸€ä¸ªå…ƒç´ å°äº5 éƒ½ä¼šè¿”å›false
         boolean noneMatch = asList1.stream().noneMatch(i -> i < 5);
-        //System.out.println(noneMatch);
-        
+        // System.out.println(noneMatch);
+
         List<Integer> asList2 = Arrays.asList(8, 9, 3);
-        // Ö»ÒªÓĞÈÎºÎÒ»¸öÔªËØ Ğ¡ÓÚ 5 ¶¼·µ»Øtrue
+        // åªè¦æœ‰ä»»ä½•ä¸€ä¸ªå…ƒç´  å°äº 5 éƒ½è¿”å›true
         boolean anyMatch = asList2.stream().anyMatch(i -> i < 5);
-        //System.out.println(anyMatch);
-        
-        
+        // System.out.println(anyMatch);
+
         List<Integer> asList3 = Arrays.asList(5, 2, 3);
-        // ÊµÏÖ¸Ã¼¯ºÏµÄÀÛ¼Ó
-        Integer reduce = asList3.stream().reduce(0, (i, j) -> i + j);
-        //System.out.println(reduce);
-        // ÊµÏÖ¸Ã¼¯ºÏµÄ³Ë»ı
-        Integer reduce1 = asList3.stream().reduce(10, (i, j) -> i * j);
-        //System.out.println(reduce1);
+        // å®ç°è¯¥é›†åˆçš„ç´¯åŠ 
+        Integer reduce = asList3.stream().reduce(0, Integer::sum);
+        // System.out.println(reduce);
+        // å®ç°è¯¥é›†åˆçš„ä¹˜ç§¯
+        Integer reduce1 = asList3.stream().reduce(10, Integer::sum);
+        // System.out.println(reduce1);
 
         double sum = lists.stream().mapToDouble(Person::getAge).sum();
-        //System.out.println(sum);
-        
-        
-        //BigDecimal add = lists.stream().map(Person::getAge).reduce(BigDecimal.ZERO, BigDecimal::add);
-        //System.out.println("Éí¸ß ×ÜºÍ£º" + df.format(add));
-        
-        
-        //ÄêÁäÅÅĞòÊä³ö
-        List<String> studentList = lists.stream()
-                .filter(x->x.getAge()>1)
-                .sorted(Comparator.comparing(Person::getAge).reversed())
-                .map(Person::getName)
-                .collect(Collectors.toList());
-        //studentList.stream().forEach(a -> System.out.print(a));
-        
-        //ÕÒ³öÊı¾İ×éµÄ×î´ó×îĞ¡Öµ
-        int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        // System.out.println(sum);
+
+        // BigDecimal add = lists.stream().map(Person::getAge).reduce(BigDecimal.ZERO, BigDecimal::add);
+        // System.out.println("èº«é«˜ æ€»å’Œï¼š" + df.format(add));
+
+        // å¹´é¾„æ’åºè¾“å‡º
+        List<String> studentList = lists.stream().filter(x -> x.getAge() > 1)
+            .sorted(Comparator.comparing(Person::getAge).reversed()).map(Person::getName).collect(Collectors.toList());
+        // studentList.stream().forEach(a -> System.out.print(a));
+
+        // æ‰¾å‡ºæ•°æ®ç»„çš„æœ€å¤§æœ€å°å€¼
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         int minx = IntStream.of(array).min().getAsInt();
-        System.out.println(minx);
-        
-        //ÕÒ³ö¼¯ºÏÖĞµÄ×î´ó×îĞ¡Öµ
+        // System.out.println(minx);
+
+        // æ‰¾å‡ºé›†åˆä¸­çš„æœ€å¤§æœ€å°å€¼
         List<Integer> asList4 = Arrays.asList(5, 2, 3);
         Optional<Integer> min = asList4.stream().min(Comparator.comparing(Function.identity()));
         Optional<Integer> max = asList4.stream().max((o1, o2) -> o1.compareTo(o2));
-        System.out.println("min:"+min.get());
-        System.out.println("max:"+max.get());
-         
-        List<Person> pList=new ArrayList<Person>();
-        Person pp1=new Person("ÕÅÈı1", 1);
+        // System.out.println("min:"+min.get());
+        // System.out.println("max:"+max.get());
+
+        List<Person> pList = new ArrayList<Person>();
+        Person pp1 = new Person("å¼ ä¸‰1", 1);
         pp1.setTime(new Timestamp(System.currentTimeMillis()));
         pList.add(pp1);
-        
-        Person pp2=new Person("ÕÅÈı1", 1);
+
+        Person pp2 = new Person("å¼ ä¸‰1", 1);
         pp2.setTime(new Timestamp(System.currentTimeMillis()));
         pList.add(pp2);
         List<Integer> collect = pList.stream().map(p -> p.getAge()).distinct().collect(Collectors.toList());
         Collections.sort(collect);
-        String monthStr=StringUtils.join(collect,'ÔÂ');
-        System.out.println(monthStr);
+
+        List<Order> orders = new ArrayList<>();
+        // è·å–è®¢å•æ˜ç»†åˆ—è¡¨
+        List<OrderItem> orderItems = orders.stream().map(Order::getOrderItems).filter(Objects::nonNull)
+            .flatMap(List<OrderItem>::stream).collect(Collectors.toList());
+
+        // è·å–æ˜ç»†äº§å“åˆ—è¡¨
+        List<String> productSkus = orderItems.stream().map(OrderItem::getAsin).filter(Objects::nonNull).distinct()
+            .collect(Collectors.toList());
         
-        System.out.println(Optional.ofNullable(null).orElse(0));
-        Map<String, Integer> appleMap = lists.stream().filter(p -> p.getName() != null).collect(Collectors.toMap(Person::getName, a -> 10,(k1,k2)-> k1 + k2));
-        System.out.println(appleMap);
         
+        // åˆ†ç»„æ±‚æœ€å¤§å€¼å¹³å‡å€¼
+        Map<String, IntSummaryStatistics> genderSummary =
+            pList.stream().collect(Collectors.groupingBy(Person::getName, Collectors.summarizingInt(Person::getAge)));
+        
+        // join
+        String joinName = lists.stream().map(Person::getName).collect(Collectors.joining(","));
+        //System.out.println(joinName);
+
     }
 
 }

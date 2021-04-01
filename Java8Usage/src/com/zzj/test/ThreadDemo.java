@@ -1,17 +1,16 @@
 package com.zzj.test;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import com.zzj.domain.TestRunnable;
+import com.zzj.domain.Person;
 
 public class ThreadDemo
 {
 
-    // ∂‡œﬂ≥Ã“Ï≤Ω
-    /*public static void main(String[] args)
+    public static void main(String[] args) throws InterruptedException
     {
+        Person p = new Person("fff", 2);
         Executor e = Executors.newFixedThreadPool(10);
         for(int i=0;i<10;i++) {
             e.execute(new Runnable()
@@ -20,13 +19,15 @@ public class ThreadDemo
                 @Override
                 public void run()
                 {
+                    p.setName("uuu");
                     System.out.println("ddddd"+"---"+Thread.currentThread().getName());
                 }
             });
         }
-       
-    }*/
-    // ∂‡œﬂ≥ÃÕ¨≤Ω
+        Thread.sleep(2000);
+       System.out.println(p.getName());
+    }
+    // ÔøΩÔøΩÔøΩﬂ≥ÔøΩÕ¨ÔøΩÔøΩ
     /*public static void main(String[] args)
     {
         ExecutorService executors = Executors.newFixedThreadPool(10);
@@ -66,28 +67,29 @@ public class ThreadDemo
         executors.shutdown();
         System.out.println("bbbbbb");
     }*/
-    public static void main(String[] args)
+   /* public static void main(String[] args)
     {
-        ExecutorService executors = Executors.newFixedThreadPool(10);
-        CountDownLatch end = new CountDownLatch(10);
+        ExecutorService executorService = Executors.newFixedThreadPool(50);
+        for (int i = 1; i < 2; i++)
+        {
+            int y=i;
+            Future<String> future = executorService.submit(() -> {
+                Thread.sleep(2000);
+                return y+"";
+            });
 
-        for (int i = 0; i < 10; i++)
-        {
-            executors.execute(new TestRunnable(end));
+            try
+            {
+                String result = future.get(1, TimeUnit.SECONDS);
+                System.out.println("result:" + result);
+            }
+            catch (Exception e)
+            {
+                System.out.println("Ë∂ÖÊó∂‰∫Ü!");
+            }
         }
-        try
-        {
-            end.await();
-        }
-        catch (Exception e)
-        {
-        }
-        finally
-        {
-            executors.shutdown();
-        }
+        executorService.shutdown();
 
-        System.out.println("bbbbbb");
-    }
+    }*/
 
 }
